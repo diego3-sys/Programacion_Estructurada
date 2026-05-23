@@ -1,0 +1,33 @@
+respuesta="si"
+num_trabajadores=0
+acum_sueldos=0
+
+
+while respuesta=="si":
+    nombre=input("ingrese el nombre del Trabajador: ")
+    num_horas=int(input("ingrese el numero de horas Trabajadas: "))
+    sueldo=int(input("ingrese el Sueldo: "))
+    
+
+    if num_horas==10:
+        aumento=20
+    elif num_horas==15:
+        aumento=30
+    elif num_horas==20:
+        aumento=15
+    elif num_horas>=25:
+        aumento=8
+    respuesta=input("¿Desea realizar otro registro SI/NO?")
+
+
+    num_trabajadores+=1
+    acum_sueldos+=1
+    sueldo_neto=sueldo*acum_sueldos
+    sueldo_hora=sueldo+sueldo*aumento
+
+
+
+
+print(f"El Sueldo a Pagar es de: {sueldo_hora}")
+print(f"El Numero de Trabajadores ingresados es de: {num_trabajadores}")
+print(f"El Sueldo Neto es de: {sueldo_neto}")
