@@ -1,0 +1,7 @@
+from paquete1 import modulos, modulos_paquete
+
+modulos.borrarPantalla()
+nom, ape = modulos.funcion2()
+edad=modulos_paquete.solicitarEdad()
+
+print(f"Nombre: {nom}\nApellidos: {ape}\nEdad: {edad}")
