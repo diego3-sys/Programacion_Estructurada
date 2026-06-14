@@ -1,0 +1,23 @@
+import modulos
+
+borrarPantalla()
+funcion1()
+
+nom="Diego Antonio"
+ape="Aguilar Meza"
+
+modulos.funcion3(nom, ape)
+nombre, apellidos=modulos.funcion4(nom, ape)
+print(f"El nombre es: {nombre} {apellidos}")
+
+#2da formar de utilizar modulos
+
+from modulos import borrarPantalla, funcion1, funcion4
+
+borrarPantalla()
+
+nom="Jose Emmanuel"
+ape="Ramirez Hernandez"
+
+nombre,apellidos=funcion4(nom,ape)
+print(f"El nombre es: {nombre}\nApellidos: {apellidos}")
