@@ -1,0 +1,27 @@
+def borrarPantalla():
+   print("\033c")
+
+def funcion1():
+   borrarPantalla()
+   nombre=input("Escribe el nombre: ").strip().upper()
+   apellidos=input("Escribe los apellidos: ").strip().upper()
+   print(f"El nombre es: {nombre} {apellidos}")
+
+def funcion3(nombre,apellidos):
+   borrarPantalla()
+   print(f"El nombre es: {nombre} {apellidos}")
+
+
+def funcion2():
+   borrarPantalla()
+   nombre=input("Escribe el nombre: ").strip().upper()
+   apellidos=input("Escribe los apellidos: ").strip().upper()
+   return nombre,apellidos
+
+nom,ape=funcion2()
+print(f"El nombre es: {nom} {ape}")
+
+def funcion4(nom, ape):
+    nombre = nom.strip().upper()
+    apellido = ape.strip().upper()
+    return nombre, apellido
