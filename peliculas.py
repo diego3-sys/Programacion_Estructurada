@@ -1,5 +1,4 @@
 import funciones
-
     
 def menuPrincipal():
     print("\t\t....:::: M E N U  P R I N C I P A L ::::...\n")
@@ -7,89 +6,75 @@ def menuPrincipal():
     return opcion
      
 def agregarPeliculas(pelis):
-    print("\t\t....:::: AGREGAR CARACTERISTICAS A UNA PELICULA ::::...\n")
-    caracteristicas=input("Ingresa la caracteristicas: ").upper().strip()
-    valor=input("Ingresa el valor de la caracteristicas: ").upper().strip
-    pelis[caracteristicas]=valor
+    print("\t\t....:::: AGREGAR PELICULAS ::::...\n")
+    peli=input("Ingresa la pelicula: ").upper().strip()
+    pelis.append(peli)
     funciones.accionExitosa()
     
 def mostrarPeliculas(pelis):
-    print("\t\t....:::: MOSTRAR LAS CARACTERISTICAS DE LA PELICULA ::::...\n")
-    if len(pelis)>0:
-         print("\tCaracteristica\t\tValor")
-         for i in pelis
-          print(f"\t{i}\t\t{pelis[i]}")
-         funciones.espereTecla()
-    else:
-        input("...¡No exuste ninguna caracteristica en la Pelicula, verofique!...")
+    print("\t\t....:::: MOSTRAR PELICULAS ::::...\n")
+    print("\tCódigo\t\tPelícula")
+    for i in range(0,len(pelis)):
+        print(f"\t{i+1}\t\t{pelis[i]}")
+    funciones.espereTecla()
    
 def limpiarPeliculas(pelis):
-     print("\t\t....:::: BORRRAS TODAS LAS CARACTERISTICAS DE LA PELICULA ::::...\n") 
+     print("\t\t....:::: BORRRAS TODAS PELICULAS ::::...\n") 
      if len(pelis)>0:
-         opc=""
+         opc=input("¿Deseas borrar TODAS las peliculas (Si/No)? ").lower().strip()
          while opc!="si" and opc!="no":
-             opc=input("¿Deseas borrar TODAS las caracteristicas de la pelicula (Si/No)? ").lower().strip()
+             opc=input("¿Deseas borrar TODAS las peliculas (Si/No)? ").lower().strip()
          if opc=="si":
              pelis=pelis.clear()
              funciones.accionExitosa()
      else:
-         input("\n\t...¡No existen caracteristas que borrar, verifique! ....")
+         input("\n\t...¡No existen peliculas que borrar, verifique! ....")
     
 def buscarPeliculas(pelis):
-    print("\t\t....:::: BUSCAR CARACTERISTICAS DE LA PELICULA ::::...\n")   
-    caracteristicas=input("Escribe el nombre de la caracteristica: ").upper().strip()
-    print("\tCaracteristica\t\tValor")
-    noencontro=False
-    for i in pelis:
-      if caracteristicas==i:
-       print(f"\t{i}\t\t{pelis[i]}")
-       noencontro=True
-      funciones.espereTecla()
-    if not(noencontro):
-        input("\n\t...¡No existe esta caracteristica que andas buscando!...")
+    print("\t\t....:::: BUSCAR PELICULAS ::::...\n")   
+    peli=input("Escribe el nombre de la pelicula: ").upper().strip()
+    if peli in pelis:
+        print("\tCódigo\t\tPelícula")
+        for i in range(0,len(pelis)):
+            if peli==pelis[i]:
+              print(f"\t{i+1}\t\t{pelis[i]}")
+        funciones.espereTecla()
+    else:
+        input("\n\t...¡No existe la pelicula que andas buscando!...")
 
 def borrarPeliculas(pelis):
-    print("\t\t....:::: BORRAR LA CARCTERISTICAS PELICULAS ::::...\n")   
-    caracteristicas=input("Escribe el nombre de la caracteristicas: ").upper().strip()
-    noencontro=True
-    for i in pelis:
-            if caracteristicas==i:
-              opc=""
+    posiciones=[]
+    print("\t\t....:::: BORRAR PELICULAS ::::...\n")   
+    peli=input("Escribe el nombre de la pelicula: ").upper().strip()
+    if peli in pelis:
+        for i in range(0,len(pelis)):
+            if peli==pelis[i]:
+              opc=input("¿Deseas borrar la pelicula (Si/No)? ").lower().strip()
               while opc!="si" and opc!="no":
-                opc=input("¿Deseas borrar la caracteristicas (Si/No)? ").lower().strip()
+                opc=input("¿Deseas borrar la pelicula (Si/No)? ").lower().strip()
               if opc=="si":
-                pelis.pop(caracteristicas)
-                funciones.accionExitosa()
-                noencontro=False
-    if noencontro:
-        input("\n\t...¡No existe la caracteristica que andas buscando!...")
+                posiciones.append(i)
+        if len(posiciones)>0:
+            for i in range(0,len(posiciones)):
+                pelis.remove(peli)
+        funciones.accionExitosa()
+    else:
+        input("\n\t...¡No existe la pelicula que andas buscando!...")
 
 def modificarPeliculas(pelis):
-    print("\t\t....:::: MODIFICAR LA CARACTERISTICA DE UNA PELICULA ::::...\n")   
-    caracteristicas=input("Escribe el nombre de la caracteristica: ").upper().strip()
-    noencontro=True
-    for i in pelis:
-            if caracteristicas==1:
-              opc=""
+    print("\t\t....:::: MODIFICAR PELICULAS ::::...\n")   
+    peli=input("Escribe el nombre de la pelicula: ").upper().strip()
+    if peli in pelis:
+        for i in range(0,len(pelis)):
+            if peli==pelis[i]:
+              opc=input("¿Deseas mofificar la pelicula (Si/No)? ").lower().strip()
               while opc!="si" and opc!="no":
-                opc=input("¿Deseas mofificar la caracteristicas (Si/No)? ").lower().strip()
+                opc=input("¿Deseas mofificar la pelicula (Si/No)? ").lower().strip()
               if opc=="si":
                 pelis[i]=input("Escribe el nuevo nombre: ").upper().strip()
                 funciones.accionExitosa()
-    if noencontro:
-        input("\n\t...¡No existe la caracteristica que andas buscando!...")
+    else:
+        input("\n\t...¡No existe la pelicula que andas buscando!...")
  
 
-def buscarPeliculas2(pelis):
-    print("Buscar la caracteristica")
-    caracteristicas=input("Escribe la caracteristica").upper().strip()
-    noencontro=True
-    for i in pelis:
-           print("\tCaracteristicas\t\Valor")
-           if caracteristicas==i:
-              print(f"\t{i}\t\t{pelis}")
-              noencontro=False
-              funciones.espereTecla()
-           elif caracteristicas!=i:
-            if noencontro:
-              input("\n\t..¡No existe esa caracteristica que andas buscando!..")
+
